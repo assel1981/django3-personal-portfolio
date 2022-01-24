@@ -1,0 +1,28 @@
+{% extends 'pages/base.html' %}
+
+{% block content %}
+
+    <div class="container">
+          <div class="row justify-content-md-center">
+              <h1 align="center"> BLOG </h1>
+              <h2 align="center"> Assel was written {{ blogs.count }} blog{{ blogs.count|pluralize }}</h2>
+          </div>
+          <div class="row justify-content-md-left">
+            <br>
+            {% for blog in blogs %}
+                <br>
+                <h2><a href="{% url 'blog:detail' blog.id %}">{{ blog.blogs_title }}</a></h2>
+                <br>
+                {{ blog.blogs_date|date:'M d Y'|upper }}
+                <br>
+                {{ blog.description|safe|truncatechars:100 }}
+                <br>
+            {% endfor %}
+          </div>
+      </div>
+
+{% endblock %}
+
+
+
+
